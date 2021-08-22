@@ -41,6 +41,11 @@ const headWithReact = React.createElement('h1', {}, "H1 With REACT")
 
 ReactDOM.render(headWithReact, document.getElementById("h1withreact"))
 
+// Expressions in JSX
+
+const elem = <p> Hello I am gonna write Expressions like 5+5 will be {5 + 5} </p>
+
+ReactDOM.render(elem, document.getElementById("expressions"))
 
 
 // If you want to start measuring performance in your app, pass a function
