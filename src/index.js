@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Header from './header'
+import Footer from './footer'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import Slider from './slider';
 
 
+
+// Create a variable to pass it to websiteName
+
+const websiteName = "Space Tech"
 const mytable = (
   <table>
     <tr>
@@ -64,8 +65,8 @@ ReactDOM.render(oneDiv, document.getElementById("onediv"))
 // you must put them inside a parent element, like a div element
 const myelement = (
   <div>
-    <h1>I am a Header.</h1>
-    <h1>I am a Header too.</h1>
+    <h1>I am a Header. 🇦🇩</h1>
+    <h1>I am a Header too. 🇵🇰</h1>
   </div>
 );
 
@@ -95,6 +96,96 @@ if (x < 10) {
 const myIfElement = <h1>{text}</h1>;
 
 ReactDOM.render(myIfElement, document.getElementById("ifele"))
+
+
+
+// Rendering a class/function component
+// ReactDOM.render(<ComponentName />, document.getElementById("")) 
+
+// Using props
+
+ReactDOM.render(<Header websiteName={websiteName} />, document.getElementById("header"))
+
+// Using props footer
+ReactDOM.render(<Footer websiteName={websiteName} />, document.getElementById("footer"))
+
+// 
+
+// ReactDOM.render(<Slider />, document.getElementById("slider"))
+
+
+class Car extends React.Component {
+  render() {
+    // <h5> I am using {this.props.brand} </h5>
+    return (
+      // To use objects please use state objects
+      <h5> I drive {this.props.color} {this.props.brand}</h5>
+    )
+  }
+}
+
+class Garage extends React.Component {
+  render() {
+
+
+    return (
+      <div>
+        < h4 > Your car? ~{this.props.websiteName} </h4>
+        <Car brand="BMW" color="Black" />
+      </div>
+
+    );
+  }
+}
+
+ReactDOM.render(<Garage websiteName={websiteName} />, document.getElementById('cars'));
+
+
+// Lets use state in React
+
+class Car2 extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    }
+  }
+  // Lets just change the status
+  chnagestatus = () => {
+    this.setState({ color: "black" })
+  }
+  render() {
+    return (
+      <div>
+        <h4>But I prefer to drive</h4>
+        <ul>
+          <li>
+            {this.state.brand}
+          </li>
+          <li>
+            Model: {this.state.model}
+          </li>
+          <li>
+            {this.state.color}
+          </li>
+          <li>
+            {this.state.year}
+          </li>
+        </ul>
+        <span>Dont like the color? 🤨</span>
+        <button
+          type="button"
+          onClick={this.chnagestatus}
+        >Change color</button>
+
+      </div>
+    )
+  }
+}
+ReactDOM.render(<Car2 />, document.getElementById('car2'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
