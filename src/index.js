@@ -187,6 +187,56 @@ class Car2 extends React.Component {
 }
 ReactDOM.render(<Car2 />, document.getElementById('car2'));
 
+
+// Mounting => getDerivedStateFromProps()
+// this method is called right before the element is rendered in the doc
+
+class Mounting extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { favoritecolor: "red" };
+  }
+  static getDerivedStateFromProps(props, state) {
+    return { favoritecolor: props.favcol };
+  }
+  render() {
+    return (
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+    );
+  }
+}
+
+ReactDOM.render(<Mounting favcol="yellow" />, document.getElementById('mounting'));
+
+
+// React Events the functional way
+// function reactevent() {
+//   alert("Played well")
+// }
+
+// const reactEvent = <button onClick={reactevent}> Shoot now!</button>
+
+// React Events the class component way :D
+class ReactEvent extends React.Component {
+  // shoot() {
+  //   alert("I am shooted :( ")
+  // }
+
+  // Always use arrow function as arrow function's THIS represent the object that owns the function
+
+  shoot = () => {
+    alert("Cool down")
+  }
+  render() {
+    return (
+      <button onClick={this.shoot}> Shoot now!</button>
+    );
+  }
+}
+
+ReactDOM.render(<ReactEvent />, document.getElementById("react-event"))
+
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
