@@ -230,11 +230,34 @@ class ReactEvent extends React.Component {
   render() {
     return (
       <button onClick={this.shoot}> Shoot now!</button>
+
+      // Passing arguments
+      // <button onClick={() => this.shoot("Goal") }> Shoot now!</button>
     );
   }
 }
 
 ReactDOM.render(<ReactEvent />, document.getElementById("react-event"))
+
+class ReactEvent2 extends React.Component {
+
+
+  shoot = (a, b) => {
+    alert(b.type)
+    alert(a)
+
+  }
+  render() {
+    return (
+      // Using arrow function to pass the arguments
+      // ev represent the React Event Object
+      <button onClick={(ev) => this.shoot("Xl", ev)}> Shoot now!</button>
+
+    );
+  }
+}
+
+ReactDOM.render(<ReactEvent2 />, document.getElementById("react-event2"))
 
 
 // If you want to start measuring performance in your app, pass a function
