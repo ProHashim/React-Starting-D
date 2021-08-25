@@ -10,6 +10,9 @@ import Slider from './slider';
 
 import styles from './test.module.css';
 
+// Import Sass
+import './sass.scss'
+
 
 
 // Create a variable to pass it to websiteName
@@ -276,6 +279,53 @@ ReactDOM.render(<ReactEvent2 />, document.getElementById("react-event2"))
 
 
 // Forms here
+
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      age: null,
+      errormessage: ''
+    };
+  }
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    let err = '';
+    if (nam === "age") {
+      if (val !== "" && !Number(val)) {
+        err = <strong>Greater then 18 pls!</strong>;
+      }
+
+    }
+    this.setState({ errormessage: err });
+    this.setState({ [nam]: val });
+  }
+  render() {
+    return (
+      <form>
+        <h1>Hello {this.state.username} {this.state.age}</h1>
+        <p>Enter your name:</p>
+        <input
+          type='text'
+          name='username'
+          onChange={this.myChangeHandler}
+        />
+        <p>Enter your age:</p>
+        <input
+          type='number'
+          name='age'
+          // min="19"
+          onChange={this.myChangeHandler}
+        />
+        {this.state.errormessage}
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(<Form />, document.getElementById("form"))
 
 
 // If you want to start measuring performance in your app, pass a function

@@ -16,16 +16,17 @@ It allows us to write HTML in React
 `React Component` <br>
 Components are independent and reusable bits of code. It works in isolation, same as our header.jsx in the `src` folder
 
-<p>
-`PROPS` <br>
+`PROPS`<p>
 Props are arguments passed into React components.
 
 Props are passed to components via HTML attributes.
 
 </p>
 
+`State`
+
 <p>
-`State` <br>
+
 React components has a built-in state object.
 
 The state object is where you store property values that belongs to the component.
