@@ -8,6 +8,8 @@ import Footer from './footer'
 
 import Slider from './slider';
 
+import styles from './test.module.css';
+
 
 
 // Create a variable to pass it to websiteName
@@ -33,7 +35,7 @@ ReactDOM.render(mytable, document.getElementById("mytable"))
 
 // Lets use some more JSX
 
-const myhead = <h1>Hello I am with JSX </h1>
+const myhead = <h1 className={styles.bigblue}>Hello I am with JSX </h1>
 
 ReactDOM.render(myhead, document.getElementById("myhead"))
 
@@ -248,10 +250,23 @@ class ReactEvent2 extends React.Component {
 
   }
   render() {
+    let mystyle = {
+      color: "burlywood",
+      backgroundColor: "green"
+    }
     return (
       // Using arrow function to pass the arguments
       // ev represent the React Event Object
-      <button onClick={(ev) => this.shoot("Xl", ev)}> Shoot now!</button>
+
+      // Lets look at inline styling
+      <div>
+        <button onClick={(ev) => this.shoot("Xl", ev)} style={{ color: "green", background: "yellow" }}> Shoot now!</button>
+        <button style={mystyle}> Shoot now!</button>
+
+
+      </div>
+
+
 
     );
   }
